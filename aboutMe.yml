@@ -1,9 +1,9 @@
-name: Your Name
-studentNumber: z1234567
-officialEmail: noIdea@unsw.edu.au
+name: Jen Stedman
+studentNumber: BVN_Architectural Graduate
+officialEmail: jenny.stedman@uqconnect.edu.au
 contactEmail: # don't write on this line
-  firstBit: firstName.Lastname # this avoids spam, the @ is implied
-  otherBit: whereIwork.com
+  firstBit: Jenny.Stedman # this avoids spam, the @ is implied
+  otherBit: uqconnect.edu.au
 # accounts
-stackOverflowLink: https://stackoverflow.com/users/1835727/ben
-github: notionparallax
+stackOverflowLink: https://stackoverflow.com/notyet
+github: Jeenix
