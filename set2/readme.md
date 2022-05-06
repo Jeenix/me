@@ -1,1 +1,3 @@
 TODO: Reflect on what you learned this week and what is still unclear.
+
+Exercise 0 - updated functions to return true value + learnt about f strings 
