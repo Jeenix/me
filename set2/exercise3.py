@@ -49,7 +49,7 @@ def loops_1a():
     for i in range (10):
         newlist.append('*')
     return newlist
-    return None
+    # return None
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -64,7 +64,7 @@ def loops_1c(number_of_items=5, symbol="#"):
         newlist.append(symbol)
     return newlist
     
-    return None
+    # return None
 
 
 def loops_2():
@@ -93,7 +93,7 @@ def loops_2():
         anotherlist.append(newlist)
     return (anotherlist)
 
-    return None
+    # return None
 
 
 def loops_3():
@@ -133,7 +133,7 @@ def makelist(value):
         newlist.append(str(value))
     return newlist
 
-
+#i was going to attempt a bit neater but got result for loop 4 FML
 
 
 
@@ -268,7 +268,7 @@ def newline(num, stars):
     stars += 2
     return newlist, num, stars
 
-    return None
+    # return None
 
 
 def little_printer(some_kind_of_list, exercise_name):
