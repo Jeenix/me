@@ -244,6 +244,30 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
+
+    height = 5
+    width = 9
+    num = width // 2
+    stars = 1
+    prettytree = []
+    newlist =[]
+    for i in range(height):
+        newlist, num, stars = newline(num, stars)
+        prettytree.append(newlist)
+    return prettytree
+
+def newline(num, stars):
+    newlist = []
+    for spaces in range(num):
+        newlist.append(' ')
+    for pretty in range(stars):
+        newlist.append('*')
+    for spaces in range(num):
+        newlist.append(' ')
+    num -= 1
+    stars += 2
+    return newlist, num, stars
+
     return None
 
 
