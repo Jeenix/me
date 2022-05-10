@@ -7,7 +7,11 @@ def is_odd(a_number):
 
     Look into modulo division using the '%' operator as one way of doing this.
     """
-    return None
+    if a_number % 2 == 0:
+        return False
+    else:
+        return True
+    # return None
 
 
 def fix_it(moves=True, should_move=True):
@@ -25,7 +29,13 @@ def fix_it(moves=True, should_move=True):
     Most people write this function with 4 return statements. 
     As an extra challenge, see if you can get that down to three.
     """
-    return None
+    if (moves == True and should_move == True) or (moves == False and should_move == False):
+        return ("No Problem")
+    elif (moves == True and should_move == False):
+        return ("Duct Tape")
+    else:
+        return ("WD-40")
+    # return None
 
 
 def loops_1a():
@@ -35,6 +45,10 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
+    newlist = []
+    for i in range (10):
+        newlist.append('*')
+    return newlist
     return None
 
 
@@ -45,6 +59,11 @@ def loops_1c(number_of_items=5, symbol="#"):
     string with exacly one symbol in it.
     E.g.: ['#', '#', '#', '#', '#']
     """
+    newlist = []
+    for i in range (number_of_items):
+        newlist.append(symbol)
+    return newlist
+    
     return None
 
 
@@ -66,6 +85,14 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
+    newlist = []
+    anotherlist = []
+    for i in range(10):
+        newlist.append('*')
+    for i in range(10):
+        anotherlist.append(newlist)
+    return (anotherlist)
+
     return None
 
 
@@ -90,7 +117,24 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    return None
+
+    # ATTEMPT 1 
+    newlist = []
+    anotherlist = []
+
+    for n in range(10):
+        newlist = makelist(n)
+        anotherlist.append(newlist)
+    return anotherlist
+
+def makelist(value):
+    newlist = []
+    for n in range (10):
+        newlist.append(str(value))
+    return newlist
+
+
+
 
 
 def loops_4():
@@ -110,7 +154,14 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    newlist = []
+    anotherlist = []
+    for n in range(10):
+        newlist.append(str(n))
+    for i in range(10):
+        anotherlist.append(newlist)
+    return (anotherlist)
+    # return None
 
 
 def loops_5():
@@ -160,7 +211,16 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+
+    listmain = []
+    for i in range(10):
+        listsub = []
+        for num in range(i+1):
+            listsub.append(str(num))
+        listmain.append(listsub)
+    return listmain
+
+    # return None
 
 
 def loops_7():
