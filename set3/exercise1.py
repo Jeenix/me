@@ -5,6 +5,9 @@ Modify each function until the tests pass.
 """
 
 
+from re import I
+
+
 def loop_ranger(start, stop=None, step=1):
     """Return a list of numbers between start and stop in steps of step.
 
@@ -12,7 +15,12 @@ def loop_ranger(start, stop=None, step=1):
     The look up the docs for range(), you can answer this with just the range 
     function, but we'd like you to do it the long way, probably using a loop.
     """
-    return None
+    numberslist = []
+    number = start
+    for i in range (start, stop, step):
+        numberslist.append(i)
+        number += step       
+    return numberslist
 
 
 def lone_ranger(start, stop, step):
@@ -20,7 +28,12 @@ def lone_ranger(start, stop, step):
 
     Look up the docs for range() and wrap it in a 1:1 way
     """
-    return None
+    numberslist = []
+
+    while start != stop: 
+        numberslist.append(start)
+        start += step 
+    return numberslist
 
 
 def two_step_ranger(start, stop):
@@ -29,7 +42,12 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
-    return None
+    numberslist = []
+
+    while start != stop: 
+        numberslist.append(start)
+        start += 2 
+    return numberslist
 
 
 def stubborn_asker(low, high):
@@ -40,7 +58,10 @@ def stubborn_asker(low, high):
 
     Look up the docs for input
     """
-    return None
+    user_number = input("Pick a number between {} and {}".format(low, high))
+    while low > user_number or user_number < high:
+        user_number = input("You really like testing my patience don't you? Pick a number between {} and {}".format(low, high))
+    return user_number
 
 
 def not_number_rejector(message):
@@ -50,7 +71,12 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    return None
+    user_number = str(input(message))
+    numeric = isinstance(user_number, (int, float))
+    while numeric == False:
+        user_number = input(message)
+        numeric = isinstance(user_number, (int, float))
+    return user_number
 
 
 def super_asker(low, high):
@@ -61,7 +87,12 @@ def super_asker(low, high):
     Try to call at least one of the other functions to minimise the
     amount of code.
     """
-    return None
+    user_number = input("Pick a number between {} and {}".format(low, high))
+    user_number = not_number_rejector(user_number)
+    while low > user_number or user_number < high:
+        user_number = input("You really like testing my patience don't you? Pick a number between {} and {}".format(low, high))
+        user_number = not_number_rejector(user_number)
+    return user_number
 
 
 if __name__ == "__main__":
