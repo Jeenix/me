@@ -25,12 +25,20 @@ def binary_search(low, high, actual_number):
     things much easier.
     """
     tries = 0
-    guess = 0
-
-    # Write your code in here
+    guess = low
+    previous_guesses = {}
+    while guess != actual_number: 
+        previous_guesses = guess_again(guess, tries, previous_guesses)
+        guess += 1
+        tries += 1 
+    print(guess)
 
     return {"guess": guess, "tries": tries}
 
+def guess_again(number, tries, previous_guesses):
+    previous_guesses[number] = tries
+    previous_guesses
+    return previous_guesses 
 
 if __name__ == "__main__":
     print(binary_search(1, 100, 5))
