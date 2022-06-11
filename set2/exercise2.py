@@ -1,9 +1,11 @@
 """Correct the syntax in this file.
 
-This file doesn't run yet.
-Go through it and change it until it runs.
-Remeber that all files must also pass the
-linter with no errors or warnings!
+This file doesn't run yet. Go through it and change it until it runs.
+
+Look at the wiggly lines. Pay attention to the colours fix the first error, and 
+it might fix errors that come after. We'll often talk about upstream (things 
+that happen before) and downstream (things that happen after). Python reads the 
+file from top to bottom.
 """
 
 import string

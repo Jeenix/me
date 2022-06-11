@@ -1,6 +1,9 @@
 """Set 3, Exercise 2.
 
 An example of how a guessing game might be written.
+Play it through a few times, but also stress test it. What if your lower bound 
+is 🍟, or your guess is "pencil", or "seven"
+This will give you some intuition about how to make exercise 3 more robust.
 """
 
 
@@ -15,7 +18,7 @@ def exampleGuessingGame():
     print("\nWelcome to the guessing game!")
     print("A number between 0 and _ ?")
     upperBound = input("Enter an upper bound: ")
-    print("OK then, a number between 0 and {} ?".format(upperBound))
+    print(f"OK then, a number between 0 and {upperBound} ?")
     upperBound = int(upperBound)
 
     actualNumber = random.randint(0, upperBound)
@@ -24,9 +27,9 @@ def exampleGuessingGame():
 
     while not guessed:
         guessedNumber = int(input("Guess a number: "))
-        print("You guessed {},".format(guessedNumber),)
+        print(f"You guessed {guessedNumber},")
         if guessedNumber == actualNumber:
-            print("You got it!! It was {}".format(actualNumber))
+            print(f"You got it!! It was {actualNumber}")
             guessed = True
         elif guessedNumber < actualNumber:
             print("Too small, try again :'(")

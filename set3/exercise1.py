@@ -41,6 +41,8 @@ def two_step_ranger(start, stop):
 
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
+
+    You can either reuse loop_ranger, or the range function that in the standard library
     """
     numberslist = []
 
@@ -56,7 +58,7 @@ def stubborn_asker(low, high):
     Ask for a number, and if the response is outside the bounds keep asking
     until you get a number that you think is OK
 
-    Look up the docs for input
+    Look up the docs for a function called "input"
     """
     user_number = input("Pick a number between {} and {}".format(low, high))
     while low > user_number or user_number < high:
@@ -67,7 +69,7 @@ def stubborn_asker(low, high):
 def not_number_rejector(message):
     """Ask for a number repeatedly until actually given one.
 
-    Ask for a number, and if the response is actually NOT a number 
+    Ask for a number, and if the response is actually NOT a number
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
@@ -84,8 +86,6 @@ def super_asker(low, high):
 
     Combine what you learnt from stubborn_asker and not_number_rejector
     to make a function that does it all!
-    Try to call at least one of the other functions to minimise the
-    amount of code.
     """
     user_number = input("Pick a number between {} and {}".format(low, high))
     user_number = not_number_rejector(user_number)
@@ -103,7 +103,6 @@ if __name__ == "__main__":
     # NOTE: because some of these take user input you can't run them from
 
     print("\nloop_ranger", loop_ranger(1, 10, 2))
-    print("\nlone_ranger", lone_ranger(1, 10, 3))
     print("\ntwo_step_ranger", two_step_ranger(1, 10))
     print("\nstubborn_asker")
     stubborn_asker(30, 45)
