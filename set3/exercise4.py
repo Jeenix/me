@@ -24,12 +24,21 @@ def binary_search(low, high, actual_number):
     tries = 0
     guess = low
     previous_guesses = {}
-    while guess != actual_number: 
-        previous_guesses = guess_again(guess, tries, previous_guesses)
-        guess += 1
-        tries += 1 
+    guessed = False
+  
+    while not guessed:
+        guessedNumber = high//2
+        if guessedNumber == actual_number:
+            guessed = True
+            previous_guesses = guess_again(guessedNumber, tries, previous_guesses)
+        elif guessedNumber > actual_number:
+            tries += 1
+            high = high//2       
+            previous_guesses = guess_again(guessedNumber, tries, previous_guesses)
+        elif guessedNumber < actual_number:
+            tries += 1  
+            previous_guesses = guess_again(guessedNumber, tries, previous_guesses)
     print(guess)
-
     return {"guess": guess, "tries": tries}
 
 def guess_again(number, tries, previous_guesses):
