@@ -22,29 +22,28 @@ def binary_search(low, high, actual_number):
     things much easier.
     """
     tries = 0
-    guess = low
-    previous_guesses = {}
+    dict_guesses = {}
     guessed = False
-  
+    guess = low    
     while not guessed:
-        guessedNumber = high//2
-        if guessedNumber == actual_number:
+        tries += 1
+        mid_value = (low + high) // 2
+        dict_guesses = guess_log(guess, tries, dict_guesses)
+        if guess == actual_number:
             guessed = True
-            previous_guesses = guess_again(guessedNumber, tries, previous_guesses)
-        elif guessedNumber > actual_number:
-            tries += 1
-            high = high//2       
-            previous_guesses = guess_again(guessedNumber, tries, previous_guesses)
-        elif guessedNumber < actual_number:
-            tries += 1  
-            previous_guesses = guess_again(guessedNumber, tries, previous_guesses)
-    print(guess)
+        elif actual_number < mid_value:
+            guess = low + 1
+            low = guess
+            high = mid_value
+        elif actual_number > mid_value: 
+            guess = high - (tries + 1)  
+            low = mid_value
     return {"guess": guess, "tries": tries}
 
-def guess_again(number, tries, previous_guesses):
-    previous_guesses[number] = tries
-    previous_guesses
-    return previous_guesses 
+def guess_log(number, tries, dict_guesses): #just logs guess to dict
+    dict_guesses[number] = tries
+    dict_guesses
+    return dict_guesses 
 
 if __name__ == "__main__":
     print(binary_search(1, 100, 5))
