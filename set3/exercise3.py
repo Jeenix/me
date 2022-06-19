@@ -28,35 +28,58 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
-def bound_define(bound_type):
-    bound_num = input(f"Enter an {bound_type} bound: ")
-    print(f"OK then, a number between 0 and {bound_type} ?")
-    bound_num = int(bound_type)
-    return bound_num
 
-def exampleGuessingGame():
     print("\nWelcome to the guessing game!")
-    print("A number between 0 and _ ?")
-    upperBound = bound_define("Upper")
-    lowerBound = bound_define("lower")
-    actualNumber = random.randint(0, upperBound)
-
+    lowerbound = input(f"Enter an lower bound: ")
+    lowerbound = check_int(lowerbound)
+    upperbound = input(f"Enter an upper bound: ")
+    upperbound = check_big(lowerbound, upperbound)
+    print(f"OK then, a number between {lowerbound} and {upperbound} ?")
+    actualNumber = random.randint(lowerbound, upperbound)
     guessed = False
-
+  
     while not guessed:
-        guessedNumber = int(input("Guess a number: "))
+        guessedNumber = input("Guess a number: ")
+        guessedNumber = check_int(guessedNumber) 
         print(f"You guessed {guessedNumber},")
         if guessedNumber == actualNumber:
             print(f"You got it!! It was {actualNumber}")
             guessed = True
+        elif guessedNumber > upperbound:
+            print("You're the genius in your family aren't you? LOL try again.")
+        elif guessedNumber < lowerbound:
+            print(f"Don't get the point of this game? The number needs to be within {lowerbound} and {upperbound}. Try again.")
         elif guessedNumber < actualNumber:
             print("Too small, try again :'(")
         else:
             print("Too big, try again :'(")
     
-    return "You got it!"
-    # the tests are looking for the exact string "You got it!". Don't modify that!
+    return "You got it!"     # the tests are looking for the exact string "You got it!". Don't modify that!
 
+def check_int(user_input):
+  user_input = make_int(user_input)
+  numeric = isinstance(user_input, (int))
+  while numeric == False:
+      message = "That isn't a number smart ass. Input a number:"
+      user_input = input(message)
+      user_input = make_int(user_input)
+      numeric = isinstance(user_input, (int))
+  return user_input
+
+def check_big(lowerbound, upperbound):
+  user_input = check_int(upperbound)
+  while lowerbound >= user_input:
+    message = f"UPPER means BIGGER you dolt... pick a number greater than {lowerbound}:"
+    user_input = input(message)  
+    user_input = check_int(user_input)
+  return user_input
+
+def make_int(user_input): 
+  try:
+    return int(user_input)
+  except ValueError:
+    print ("umm..")
+    return user_input
 
 if __name__ == "__main__":
     print(advancedGuessingGame())
