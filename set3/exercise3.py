@@ -28,7 +28,6 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
-
     print("\nWelcome to the guessing game!")
     lowerbound = input(f"Enter an lower bound: ")
     lowerbound = check_int(lowerbound)

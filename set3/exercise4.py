@@ -3,7 +3,6 @@
 
 import math
 
-
 def binary_search(low, high, actual_number):
     """Do a binary search.
 
@@ -21,31 +20,27 @@ def binary_search(low, high, actual_number):
     Use the VS Code debugging tools a lot here. It'll make understanding
     things much easier.
     """
+    # tries = 0
+    # guess = 0
+    # return {"guess": tries , "tries": guess}
+
     tries = 0
-    dict_guesses = {}
     guessed = False
-    guess = low    
-    while not guessed:
+    while guessed != True:
         tries += 1
-        mid_value = (low + high) // 2
-        dict_guesses = guess_log(guess, tries, dict_guesses)
+        guess = mid_value(low, high)
         if guess == actual_number:
             guessed = True
             return {"guess": guess, "tries": tries}
-        elif actual_number < mid_value:
-            guess = low + 1
-            low = guess
-            high = mid_value
-        elif actual_number > mid_value: 
-            guess = high - 1
-            low = mid_value
-            high = guess
-            
+        elif guess < actual_number:
+            low = guess + 1
+        elif guess > actual_number: 
+            high = guess - 1
 
-def guess_log(number, tries, dict_guesses): #just logs guess to dict
-    dict_guesses[number] = tries
-    dict_guesses
-    return dict_guesses 
+def mid_value(low, high):
+    mid_value = (low + high) // 2
+    return mid_value
+
 
 if __name__ == "__main__":
     print(binary_search(1, 100, 5))
