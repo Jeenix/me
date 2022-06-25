@@ -53,8 +53,8 @@ def advancedGuessingGame():
             print("Too small, try again :'(")
         else:
             print("Too big, try again :'(")
-    
-    return "You got it!"     # the tests are looking for the exact string "You got it!". Don't modify that!
+    return "You got it!"
+    # the tests are looking for the exact string "You got it!". Don't modify that!
 
 def check_int(user_input):
   user_input = make_int(user_input)

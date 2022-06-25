@@ -31,14 +31,16 @@ def binary_search(low, high, actual_number):
         dict_guesses = guess_log(guess, tries, dict_guesses)
         if guess == actual_number:
             guessed = True
+            return {"guess": guess, "tries": tries}
         elif actual_number < mid_value:
             guess = low + 1
             low = guess
             high = mid_value
         elif actual_number > mid_value: 
-            guess = high - (tries + 1)  
+            guess = high - 1
             low = mid_value
-    return {"guess": guess, "tries": tries}
+            high = guess
+            
 
 def guess_log(number, tries, dict_guesses): #just logs guess to dict
     dict_guesses[number] = tries
