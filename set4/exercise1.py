@@ -3,6 +3,7 @@
 
 import json
 import os
+from re import I
 import requests
 import inspect
 import sys
@@ -42,12 +43,10 @@ def get_some_details():
     lastName = data["results"][0]["name"]["last"]
     password = data["results"][0]["login"]["password"]
     postcode = data["results"][0]["location"]["postcode"]
-    postcode = data["results"][0]["location"]["postcode"]
     id = data["results"][0]["id"]["value"]
     postcodePlusID = postcode + int(id)
-    json_data.close()
-    return {"lastName": lastName, "password": password, "postcodePlusID": postcodePlusID}
-
+    open(LOCAL + "/lazyduck.json").close()
+    return {"lastName": lastName, "password": password, "postcodePlusID": postcodePlusID,}
 
 def wordy_pyramid():
     """Make a pyramid out of real words.
@@ -62,16 +61,16 @@ def wordy_pyramid():
     Return the pyramid as a list of strings.
     I.e. ["cep", "dwine", "tenoner", ...]
     [
-    "cep",
-    "dwine",
-    "tenoner",
-    "ectomeric",
-    "archmonarch",
-    "phlebenterism",
-    "autonephrotoxin",
-    "redifferentiation",
-    "phytosociologically",
-    "theologicohistorical",
+    "cep", 3
+    "dwine", 5
+    "tenoner", 7 
+    "ectomeric", 9 
+    "archmonarch", 11
+    "phlebenterism", 13
+    "autonephrotoxin",  15
+    "redifferentiation",  17
+    "phytosociologically", 19 
+    "theologicohistorical", 20 
     "supersesquitertial",
     "phosphomolybdate",
     "spermatophoral",
@@ -83,10 +82,22 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
+   
     pyramid = []
-
+    max_length = 20
+    start_num = 3
+    step = 2
+    for i in range(start_num, max_length, step):    #for i in range(start, stop, step):
+        get_a_word(i, pyramid)
+    for i in range(max_length, start_num, -step):
+        get_a_word(i, pyramid)
     return pyramid
 
+def get_a_word(num, pyramid):
+    getword = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={num}"
+    word = requests.get(getword).text 
+    pyramid.append(word)
+    return pyramid
 
 def pokedex(low=1, high=5):
     """Return the name, height and weight of the tallest pokemon in the range low to high.
@@ -102,13 +113,19 @@ def pokedex(low=1, high=5):
          get very long. If you are accessing a thing often, assign it to a
          variable and then future access will be easier.
     """
-    id = 5
-    url = f"https://pokeapi.co/api/v2/pokemon/{id}"
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
-
-    return {"name": None, "weight": None, "height": None}
+    pokedex = []
+    for i in range(low, high, 1):
+        url = f"https://pokeapi.co/api/v2/pokemon/{i}"
+        r = requests.get(url)
+        if r.status_code is 200:
+            the_json = json.loads(r.text)
+            pokedex.append({
+                    "name": the_json["name"],
+                    "weight": the_json["weight"],
+                    "height": the_json["height"],})
+    pokedex.sort(key=lambda x: x["height"], reverse=True)
+    tallestPoke = pokedex[0]
+    return tallestPoke
 
 
 def diarist():
@@ -128,7 +145,18 @@ def diarist():
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
-    pass
+    counting_lines = 0 
+    laser_data = open(LOCAL + "/Trispokedovetiles(laser).gcode")
+    data = laser_data.readlines()
+    for lines in data:
+        if "M10 P1" in lines:
+            counting_lines += 1 
+            print(lines)
+    laser_data.close()
+    lasers_file = open("set4/lasers.pew", "w")
+    lasers_file.write(f"{counting_lines}")
+    lasers_file.close()
+
 
 
 if __name__ == "__main__":
