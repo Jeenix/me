@@ -151,9 +151,8 @@ def diarist():
     for lines in data:
         if "M10 P1" in lines:
             counting_lines += 1 
-            print(lines)
     laser_data.close()
-    lasers_file = open("set4/lasers.pew", "w")
+    lasers_file = open(LOCAL + "/lasers.pew", "w")
     lasers_file.write(f"{counting_lines}")
     lasers_file.close()
 
